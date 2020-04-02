@@ -10,3 +10,5 @@ Tested with "The Glorious Glasgow Haskell Compilation System", version 8.6.5.
 ```
 
 then, follow the instructions within the code listing.
+
+Please refer to https://forsyde.github.io/forsyde-shallow on ForSyDe installation details.
