@@ -1,19 +1,19 @@
------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- |
--- Module      :  Application model using ForSyDe.Shallow
+-- Module      :  Application model illustrative example using ForSyDe.Shallow
 -- Copyright   :  (c) Denis Loubach
 -- License     :  BSD-style (see the file LICENSE)
 -- 
 -- Stability   :  experimental
 -- Portability :  portable
 --
------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 module ApplicationModel where
 import ForSyDe.Shallow
 
 -- ::Path.Data.Homogeneous class
--- regular data input signals definitions
+-- regular data input signals arbitrary definitions
 s_key  = signal [1, 4, 6, 1, 1]
 s_input = signal [256, 512, 1024, 2048, -512]
 
@@ -23,7 +23,7 @@ fsub x y = y - x
 fadd x y = x + y
 
 -- ::Path.Data.Hybrid class
--- function signals definition (static scheduling)
+-- function signals arbitrary definition (ie static scheduling)
 s_f     = signal [(fadd),(fsub),(fadd),(fsub),(fadd)]
 s_f_inv = signal [(fsub),(fadd),(fsub),(fadd),(fsub)]
 
@@ -49,6 +49,6 @@ lambdaExample s_key s_input = (s_enc, s_output)
              s_enc = cipher s_encF s_input       -- s_enc :: Path.Data.Homogeneous
              s_output = decipher s_decF s_enc    -- s_output :: Path.Data.Homogeneous
 
--- testing the application model illustrative example
+-- use the following for testing this application model illustrative example in GHCi
 -- *ApplicationModel> lambdaExample s_key s_input
 -- ({257,508,1030,2047,-511},{256,512,1024,2048,-512})
