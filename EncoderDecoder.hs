@@ -29,7 +29,7 @@ s_f_inv = signal [(fsub),(fadd),(fsub),(fadd),(fsub)]
 
 -- function placeholder (FPH) implementation for synchronous (SY) MoC
 -- runtime reconfigurable process constructor definition
-fphSY = comb2SY ($)
+apply = comb2SY ($)
 
 -- ::Procedure.Controller class
 -- control processes/vertex definition
@@ -39,8 +39,8 @@ decipherGen s_f_inv s_key = comb2SY ($) s_f_inv s_key
 -- ::Procedure.Executor.Variable class
 -- reconfigurable processes/vertex definitions following
 -- function placeholder (FPH) definition
-cipher s_encF s_input = fphSY s_encF s_input
-decipher s_decF s_enc = fphSY s_decF s_enc
+cipher s_encF s_input = apply s_encF s_input
+decipher s_decF s_enc = apply s_decF s_enc
 
 -- hierarchical process network definition
 lambdaExample s_key s_input = (s_enc, s_output)
