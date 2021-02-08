@@ -12,17 +12,20 @@
 module ApplicationModel where
 import ForSyDe.Shallow
 
--- ::Path.Data.Homogeneous class
--- regular data input signals arbitrary definitions
+-- ::class Path.Data.Hybrid (Application-domain Ontology)
+-- regular data input signal arbitrary definitions
 s_key  = signal [1, 4, 6, 1, 1]
+
+-- ::class Path.Data.Homogeneous
+-- regular data input signal arbitrary definitions
 s_input = signal [256, 512, 1024, 2048, -512]
 
--- ::Function class
+-- ::class Value.Function (Application-domain Ontology)
 -- functions definition
 fsub x y = y - x
 fadd x y = x + y
 
--- ::Path.Data.Hybrid class
+-- ::class Path.Data.Hybrid (Application-domain Ontology)
 -- function signals arbitrary definition (ie static scheduling)
 s_f     = signal [(fadd),(fsub),(fadd),(fsub),(fadd)]
 s_f_inv = signal [(fsub),(fadd),(fsub),(fadd),(fsub)]
@@ -32,12 +35,12 @@ s_f_inv = signal [(fsub),(fadd),(fsub),(fadd),(fsub)]
 apply = ($)
 fphSY = comb2SY apply
 
--- ::Procedure.Controller class
+-- ::class Procedure.Controller (Application-domain Ontology)
 -- control processes/vertex definition
 cipherGen s_f s_key = comb2SY ($) s_f s_key
 decipherGen s_f_inv s_key = comb2SY ($) s_f_inv s_key
 
--- ::Procedure.Executor.Variable class
+-- ::class Procedure.Executor.Variable (Application-domain Ontology)
 -- reconfigurable processes/vertex definitions following
 -- function placeholder (FPH) definition
 cipher s_encF s_input = fphSY s_encF s_input
