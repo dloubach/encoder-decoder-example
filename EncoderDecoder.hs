@@ -16,7 +16,7 @@ import ForSyDe.Shallow
 -- regular data input signal arbitrary definitions
 s_key  = signal [1, 4, 6, 1, 1]
 
--- ::class Path.Data.Homogeneous
+-- ::class Path.Data.Homogeneous (Application-domain Ontology)
 -- regular data input signal arbitrary definitions
 s_input = signal [256, 512, 1024, 2048, -512]
 
