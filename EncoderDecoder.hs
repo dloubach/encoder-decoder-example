@@ -48,10 +48,14 @@ decipher s_decF s_enc = fphSY s_decF s_enc
 
 -- hierarchical process network definition
 lambdaExample s_key s_input = (s_enc, s_output)
-       where s_encF = cipherGen s_f s_key        -- s_encF :: Path.Control
-             s_decF = decipherGen s_f_inv s_key  -- s_decF :: Path.Control
-             s_enc = cipher s_encF s_input       -- s_enc :: Path.Data.Homogeneous
-             s_output = decipher s_decF s_enc    -- s_output :: Path.Data.Homogeneous
+       where -- s_encF :: Path.Control
+             s_encF = cipherGen s_f s_key
+             -- s_decF :: Path.Control
+             s_decF = decipherGen s_f_inv s_key
+             -- s_enc :: Path.Data.Homogeneous
+             s_enc = cipher s_encF s_input
+             -- s_output :: Path.Data.Homogeneous
+             s_output = decipher s_decF s_enc
 
 -- use the following for testing this application model illustrative example in GHCi
 -- *ApplicationModel> lambdaExample s_key s_input
